@@ -1,0 +1,27 @@
+diff --git a/spec/mixlib/shellout_spec.rb b/spec/mixlib/shellout_spec.rb
+index cc59829..5d2c93d 100644
+--- a/spec/mixlib/shellout_spec.rb
++++ b/spec/mixlib/shellout_spec.rb
+@@ -422,7 +422,6 @@ describe Mixlib::ShellOut do
+             end
+ 
+             context 'when not using a batch file' do
+-              let(:watch) { lambda { |a| ap a } }
+               let(:cmd) { "#{executable_file_name} #{script_name}" }
+ 
+               let(:executable_file_name) { "\"#{dir}/Ruby Parser.exe\"".tap(&make_executable!) }
+diff --git a/spec/spec_helper.rb b/spec/spec_helper.rb
+index 0eab6ba..23908f3 100644
+--- a/spec/spec_helper.rb
++++ b/spec/spec_helper.rb
+@@ -6,10 +6,6 @@ require 'tmpdir'
+ require 'tempfile'
+ require 'timeout'
+ 
+-require 'ap'
+-
+-WATCH = lambda { |x| ap x } unless defined?(WATCH)
+-
+ # Load everything from spec/support
+ # Do not change the gsub.
+ Dir["spec/support/**/*.rb"].map { |f| f.gsub(%r{.rb$}, '') }.each { |f| require f }

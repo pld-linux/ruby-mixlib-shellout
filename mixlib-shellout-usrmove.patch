@@ -1,0 +1,13 @@
+diff --git a/spec/mixlib/shellout_spec.rb b/spec/mixlib/shellout_spec.rb
+index cc59829..cecd585 100644
+--- a/spec/mixlib/shellout_spec.rb
++++ b/spec/mixlib/shellout_spec.rb
+@@ -298,7 +298,7 @@ describe Mixlib::ShellOut do
+       let(:options) { { :cwd => cwd } }
+ 
+       context 'when running under Unix', :unix_only do
+-        let(:cwd) { '/bin' }
++        let(:cwd) { '/tmp' }
+         let(:cmd) { 'pwd' }
+ 
+         it "should chdir to the working directory" do
