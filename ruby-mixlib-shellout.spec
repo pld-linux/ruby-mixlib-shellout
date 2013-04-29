@@ -12,6 +12,7 @@ Source0:	http://rubygems.org/gems/%{gem_name}-%{version}.gem
 # git checkout 1.1.0
 # tar czvf rubygem-mixlib-shellout-1.1.0-specs.tgz spec/
 Source1:	rubygem-%{gem_name}-%{version}-specs.tgz
+# Source1-md5:	60630f23b9a4da1036f3fd8c33e47585
 # Patch for UsrMove, see http://tickets.opscode.com/browse/MIXLIB-6
 Patch0:		mixlib-shellout-usrmove.patch
 # Patch for removal of awesomeprint, see http://tickets.opscode.com/browse/MIXLIB-7
