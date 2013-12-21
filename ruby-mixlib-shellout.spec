@@ -2,30 +2,34 @@
 # Conditional build:
 %bcond_without	tests		# build without tests
 
+%if 0
+# Tests for this package are not in the gem. To update:
+V=1.3.0
+git clone https://github.com/opscode/mixlib-shellout.git
+GIT_DIR=mixlib-shellout/.git git fetch origin $V
+GIT_DIR=mixlib-shellout/.git git archive $V spec/ | bzip2 -9 > mixlib-shellout-specs-$V.tar.bz2
+./dropin mixlib-shellout-specs-$V.tar.bz2 &
+%endif
+
 %define pkgname mixlib-shellout
 Summary:	Run external commands on Unix or Windows
 Name:		ruby-%{pkgname}
-Version:	1.1.0
-Release:	2
+Version:	1.3.0
+Release:	1
 License:	Apache v2.0
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
-# Source0-md5:	94d5aedb7c30a7b10d3b0da03bc4d62a
-# Tests for this package are not in the gem. To update:
-# git clone https://github.com/opscode/mixlib-shellout.git && cd mixlib-shellout
-# git checkout 1.1.0
-# tar czvf rubygem-mixlib-shellout-1.1.0-specs.tgz spec/
-Source1:	rubygem-%{pkgname}-%{version}-specs.tgz
-# Source1-md5:	60630f23b9a4da1036f3fd8c33e47585
-# Patch for UsrMove, see http://tickets.opscode.com/browse/MIXLIB-6
-Patch0:		mixlib-shellout-usrmove.patch
-# Patch for removal of awesomeprint, see http://tickets.opscode.com/browse/MIXLIB-7
-Patch1:		mixlib-shellout-awesomeprint-removal.patch
+# Source0-md5:	7574f6f165d0145977d6ae7367453833
+Source1:	%{pkgname}-specs-%{version}.tar.bz2
+# Source1-md5:	950e7d9297e4b8693424674331740b87
 URL:		https://github.com/opscode/mixlib-shellout
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
-BuildRequires:	ruby-rspec
 BuildRequires:	ruby-rubygems
+%if %{with tests}
+BuildRequires:	ruby-rspec < 3
+BuildRequires:	ruby-rspec >= 2.0
+%endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -42,15 +46,14 @@ Documentation for %{name}
 
 %prep
 %setup -q -n %{pkgname}-%{version} -a1
-%patch0 -p1
-%patch1 -p1
 
 %build
 %__gem_helper spec
 
 %if %{with tests}
 # One of the tests involves a fork && sleep 10 that may not finish before mock
-rspec && sleep 10
+rspec
+sleep 10
 %endif
 
 %install
