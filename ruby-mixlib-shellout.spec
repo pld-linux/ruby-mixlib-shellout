@@ -6,7 +6,7 @@
 # Tests for this package are not in the gem. To update:
 V=1.4.0
 git clone https://github.com/opscode/mixlib-shellout.git
-GIT_DIR=mixlib-shellout/.git git fetch origin $V
+GIT_DIR=mixlib-shellout/.git git fetch origin tag $V
 GIT_DIR=mixlib-shellout/.git git archive $V spec/ | bzip2 -9 > mixlib-shellout-specs-$V.tar.bz2
 ./dropin mixlib-shellout-specs-$V.tar.bz2 &
 %endif
