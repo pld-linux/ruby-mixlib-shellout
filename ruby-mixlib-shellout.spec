@@ -4,7 +4,7 @@
 
 %if 0
 # Tests for this package are not in the gem. To update:
-V=1.4.0
+V=2.0.0
 git clone https://github.com/opscode/mixlib-shellout.git
 GIT_DIR=mixlib-shellout/.git git fetch origin tag $V
 GIT_DIR=mixlib-shellout/.git git archive $V spec/ | bzip2 -9 > mixlib-shellout-specs-$V.tar.bz2
@@ -14,14 +14,14 @@ GIT_DIR=mixlib-shellout/.git git archive $V spec/ | bzip2 -9 > mixlib-shellout-s
 %define pkgname mixlib-shellout
 Summary:	Run external commands on Unix or Windows
 Name:		ruby-%{pkgname}
-Version:	1.4.0
-Release:	2
+Version:	2.0.0
+Release:	1
 License:	Apache v2.0
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
-# Source0-md5:	1f5d0e776ef20332634f31ada8022d66
+# Source0-md5:	5bba918d8dcaf56a9c01e59837f46168
 Source1:	%{pkgname}-specs-%{version}.tar.bz2
-# Source1-md5:	e1c9c7aefba7f9db112e903f7b2f8824
+# Source1-md5:	de7ed9f772768b5ce90b6aa4128aa040
 URL:		https://github.com/opscode/mixlib-shellout
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
