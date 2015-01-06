@@ -15,7 +15,7 @@ GIT_DIR=mixlib-shellout/.git git archive $V spec/ | bzip2 -9 > mixlib-shellout-s
 Summary:	Run external commands on Unix or Windows
 Name:		ruby-%{pkgname}
 Version:	1.4.0
-Release:	2
+Release:	3
 License:	Apache v2.0
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
