@@ -6,7 +6,7 @@
 Summary:	Run external commands on Unix or Windows
 Name:		ruby-%{pkgname}
 Version:	3.4.10
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Development/Languages
 Source0:	https://rubygems.org/downloads/%{pkgname}-%{version}.gem
